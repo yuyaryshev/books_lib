@@ -1,0 +1,15 @@
+{
+    "00000008": {
+        "posAddr": "src/books_service/books_service.ts:40:33:1306",
+        "message": "Error on server while handling request. Error stack: ${e.stack}",
+        "refs": []
+    },
+    "00001215": {
+        "posAddr": "src/books_service/books_service.ts:58:26:1798",
+        "refs": []
+    },
+    "00001216": {
+        "posAddr": "src/books_service/books_service.ts:66:30:2057",
+        "refs": []
+    }
+}
