@@ -1,25 +1,38 @@
 import { expectDeepEqual } from "ystd";
 import axios from "axios";
 import { makeApiCaller, makeCallerUrl, getLastBooksApi, setLastBooksApi } from "../../api/index.js";
-import { BooksLibServiceOpts, initBooksLibService } from "../books_service.js";
+import type { BookLibServerSettings } from "../settings";
+import { initBooksLibService } from "../books_service.js";
 
 const port = 7340;
-const makeTestServiceOpts: (portOffset: number) => BooksLibServiceOpts = (portOffset: number) => {
+const makeTestServiceOpts: (portOffset: number) => BookLibServerSettings = (portOffset: number) => {
     const actualPort = port + portOffset;
     return {
         port: actualPort,
         virtualFolder: "/otherApi/",
         baseUrl: `http://localhost:${actualPort}/otherApi/`,
+        db: {
+            recreateSchema: false,
+            createTestData: false,
+            client: "better-sqlite3",
+            connection: {
+                filename: ":memory:",
+                // filename: "./ylog_server.db",
+            },
+        },
+        authStorage: {
+            path: ":memory:",
+        },
     };
 };
 
 describe("rsm_checks_module/validation_service/tests/getLastBooks.test.ts", () => {
     it("getLastBooksApi - request1", async function () {
         const testServiceOpts = makeTestServiceOpts(1);
-        const validationService = initBooksLibService(testServiceOpts);
+        const booksLibService = initBooksLibService(testServiceOpts);
 
         try {
-            await validationService.start();
+            await booksLibService.start();
             const axiosOpts = {
                 baseURL: makeCallerUrl(testServiceOpts),
             };
@@ -56,7 +69,7 @@ describe("rsm_checks_module/validation_service/tests/getLastBooks.test.ts", () =
             //        } catch (e: any) {
             //            throw e;
         } finally {
-            validationService?.stop();
+            booksLibService?.stop();
         }
     });
 });

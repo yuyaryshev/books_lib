@@ -1,15 +1,25 @@
 {
-    "00000008": {
-        "posAddr": "src/books_service/books_service.ts:40:33:1306",
+    "00000002": {
+        "posAddr": "src/books_service/books_service.ts:50:37:1673",
         "message": "Error on server while handling request. Error stack: ${e.stack}",
         "refs": []
     },
     "00001215": {
-        "posAddr": "src/books_service/books_service.ts:58:26:1798",
+        "posAddr": "src/books_service/books_service.ts:65:26:2145",
         "refs": []
     },
     "00001216": {
-        "posAddr": "src/books_service/books_service.ts:66:30:2057",
+        "posAddr": "src/books_service/books_service.ts:73:30:2404",
+        "refs": []
+    },
+    "00000001": {
+        "posAddr": "src/books_service/db/books.ts:5:21:213",
+        "message": "booksTableInitializer - @notImplemented",
+        "refs": []
+    },
+    "00000067": {
+        "posAddr": "src/books_service/db/db_generics/BaseTable.ts:60:14:1670",
+        "message": "Internal error. Create not specified for '${this.tableDescriptor.tableName}' table. Use the following as guidline:n",
         "refs": []
     }
 }

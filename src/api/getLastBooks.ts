@@ -1,7 +1,7 @@
 import { httpApiDefinition, httpApiFunction } from "yhttp_api";
 import { object, string, number, array, anyJson, boolean, optional } from "yuyaryshev-json-type-validation";
 
-import { decoderSearchResult } from "./searchBooksApi";
+import { decoderSearchResult } from "./searchBooksApi.js";
 
 export const getLastBooksApi = httpApiDefinition(
     "getLastBooks",
