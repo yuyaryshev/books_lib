@@ -37,8 +37,8 @@
         "test": "mocha './lib/cjs/**/*.test.js'"
     },
     "resolutions": {
-        "yhttp_api": "^1.0.8",
-        "yhttp_api_express": "^1.0.9",
+        "yhttp_api": "^1.0.13",
+        "yhttp_api_express": "^1.0.13",
         "@types/node": "^20.11.17"
     },
     "devDependencies": {
@@ -98,8 +98,8 @@
         "json5": "^2.2.3",
         "knex": "^3.1.0",
         "luxon": "3.4.4",
-        "yhttp_api": "^1.0.8",
-        "yhttp_api_express": "^1.0.9",
+        "yhttp_api": "^1.0.13",
+        "yhttp_api_express": "^1.0.13",
         "ystd": "^3.8.0",
         "yuyaryshev-json-type-validation": "latest"
     }

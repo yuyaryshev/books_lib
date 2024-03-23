@@ -20,6 +20,16 @@ const makeTestServiceOpts: (portOffset: number) => BookLibServerSettings = (port
                 // filename: "./ylog_server.db",
             },
         },
+        book_bodies_db: {
+            recreateSchema: false,
+            createTestData: false,
+            client: "better-sqlite3",
+            connection: {
+                filename: ":memory:",
+                // filename: "./ylog_server.db",
+            },
+        },
+
         authStorage: {
             path: ":memory:",
         },
@@ -49,7 +59,7 @@ describe("rsm_checks_module/validation_service/tests/getBook.test.ts", () => {
                 const response = await apiCaller.getBook(request);
                 expectDeepEqual(response, {
                     metadata: {
-                        id: "BookId",
+                        id: "1001",
                         name: "book name here",
                         author: "author here",
                         myMark: 3,

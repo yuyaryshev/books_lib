@@ -8,7 +8,6 @@ import { ServiceDbEnv } from "../ServiceDbEnv.js";
 
 // DOMAIN(Book)
 import { BaseTable, BaseRowDefaultFields, BaseRowT, TableDescriptor, declareBaseColumns } from "./db_generics/BaseTable.js";
-import { Knex } from "knex";
 
 export const bookTableDescriptor: TableDescriptor = {
     tableName: "books",
@@ -19,6 +18,9 @@ export type BookRowDefaultFields = BaseRowDefaultFields;
 
 export interface BookRowT extends BaseRowT {
     // DOMAIN_FIELDS(Base).Ancestors DOMAIN_FIELDS(Book)
+    author: string;
+    myMark: number;
+    tags: string;
 }
 
 export class booksTable extends BaseTable<BookRowT, BookRowDefaultFields> {
@@ -31,15 +33,10 @@ export class booksTable extends BaseTable<BookRowT, BookRowDefaultFields> {
             await this.knex.schema.createTable(this.tableDescriptor.tableName, (t) => {
                 // DOMAIN_FIELDS(Base).Ancestors DOMAIN_FIELDS(Book)
                 t.bigInteger("id").primary();
-                t.string("appId", 200);
-                t.string("workerId", 200);
-
-                t.string("db", 200);
-                t.string("fbq", 200);
-                t.string("token", 200);
-                t.string("ts_started", 200);
-                t.string("ts_finished", 200);
-                t.string("type", 200);
+                t.string("name", 200);
+                t.string("author", 200);
+                t.integer("myMark");
+                t.string("tags", 2000);
             });
         }
     }
@@ -49,33 +46,24 @@ export class booksTable extends BaseTable<BookRowT, BookRowDefaultFields> {
             // DOMAIN_FIELDS(Base).Ancestors DOMAIN_FIELDS(Book)
             {
                 id: 1001,
-                appId: "testApp01",
-                workerId: "workerId1",
-                db: "targetDb1",
-                fbq: "targetFbq1",
-                token: "token1",
-                ts_started: "2000-01-01 00:00:00",
-                type: "Book",
+                name: "book1001 name",
+                author: "book1001 author",
+                myMark: 3,
+                tags: `["tag1", "tag2"]`,
             },
             {
                 id: 1002,
-                appId: "testApp02",
-                workerId: "workerId2",
-                db: "targetDb2",
-                fbq: "targetFbq2",
-                token: "token2",
-                ts_started: "2000-01-02 00:00:00",
-                type: "Book",
+                name: "book1002 name",
+                author: "book1002 author",
+                myMark: 4,
+                tags: `["tag1", "tag3"]`,
             },
             {
                 id: 1003,
-                appId: "testApp03",
-                workerId: "workerId3",
-                db: "targetDb3",
-                fbq: "targetFbq3",
-                token: "token3",
-                ts_started: "2000-01-03 00:00:00",
-                type: "Book",
+                name: "book1003 name",
+                author: "book1003 author",
+                myMark: 1,
+                tags: `["tag2"]`,
             },
         ]);
     }

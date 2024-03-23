@@ -20,6 +20,15 @@ const makeTestServiceOpts: (portOffset: number) => BookLibServerSettings = (port
                 // filename: "./ylog_server.db",
             },
         },
+        book_bodies_db: {
+            recreateSchema: false,
+            createTestData: false,
+            client: "better-sqlite3",
+            connection: {
+                filename: ":memory:",
+                // filename: "./ylog_server.db",
+            },
+        },
         authStorage: {
             path: ":memory:",
         },

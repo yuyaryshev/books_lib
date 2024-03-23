@@ -7,14 +7,23 @@ import { BookId, BookMetadata, decoderBookMetadata } from "../../types/index.js"
 
 export function getBookApiImpl(env: ServiceApiEnv) {
     implementHttpExpressApi(env.apiRoot, getBookApi, async (req: typeof getBookApi.request): Promise<typeof getBookApi.response> => {
+        const bookRow = await env.tables.books.getById(req.bookId);
+        const bookBodyRow = await env.tables.book_bodies.getById(req.bookId);
+
+        if (!bookRow) {
+            throw new Error(`CODE00000004 BookId = ${req.bookId} - not found!`);
+        }
+
+        const parsedTags = JSON.parse(bookRow.tags);
         const metadata: BookMetadata = {
-            id: "BookId",
-            name: "book name here",
-            author: "author here",
-            myMark: 3,
-            tags: ["tag1", "tag2"],
+            id: req.bookId,
+            name: bookRow.name,
+            description: bookRow.description,
+            author: bookRow.author,
+            myMark: bookRow.myMark,
+            tags: parsedTags,
         };
-        const body = "Test book body";
+        const body = bookBodyRow?.body || `BOOK_BODY_NOT_FOUND bookId=${req.bookId}`;
         const r: typeof getBookApi.response = { metadata, body };
         return r;
     });

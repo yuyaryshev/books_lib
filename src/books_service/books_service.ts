@@ -9,7 +9,8 @@ import { YHttpResponse } from "yhttp_api_express/src/implementerLib";
 import { ServiceDbEnv } from "./ServiceDbEnv.js";
 import { initTables } from "./db/index.js";
 import knexLib, { Knex } from "knex";
-import { BookLibServerSettings, defaultBookLibServerSettings } from "./settings";
+import { BookLibServerSettings, defaultBookLibServerSettings } from "./settings.js";
+import { deepEqual } from "ystd";
 
 export interface BooksLibService {
     start: () => Promise<void> | void;
@@ -24,7 +25,13 @@ export function initBooksLibService(opts0: BookLibServerSettings) {
     async function start() {
         const env0 = {};
         const knex = Object.assign(knexLib({ ...opts.db, useNullAsDefault: true }), { id: "main", settings: opts.db });
-        const dbEnv: ServiceDbEnv = Object.assign(env0, { knex });
+
+        const bodies_in_same_db = deepEqual(opts.book_bodies_db, opts.db);
+        const book_bodies_knex = bodies_in_same_db
+            ? knex
+            : Object.assign(knexLib({ ...opts.book_bodies_db, useNullAsDefault: true }), { id: "bodies_db", settings: opts.book_bodies_db });
+
+        const dbEnv: ServiceDbEnv = Object.assign(env0, { knex, book_bodies_knex });
         const tables = await initTables(dbEnv);
         const envWithTables = Object.assign(dbEnv, { tables });
 
@@ -32,11 +39,7 @@ export function initBooksLibService(opts0: BookLibServerSettings) {
         httpServerApp.use(express.json());
 
         async function onExceptionHandler(req: any, res: any, e: any, response: YHttpResponse) {
-            const r: any = {
-                errorCode: "VE9003",
-                additionalMessage: `CODE00000002 Error on server while handling request. Error stack: ${e.stack}`,
-            };
-            return { errors: [r] };
+            return { error: e.stack };
         }
 
         const apiRoot: ApiRoot = {
@@ -45,7 +48,7 @@ export function initBooksLibService(opts0: BookLibServerSettings) {
             onExceptionHandler,
         };
 
-        const apiPrereq: ServiceApiEnv = { apiRoot };
+        const apiPrereq: ServiceApiEnv = Object.assign(dbEnv, { apiRoot, tables });
         publishApis(apiPrereq);
 
         runningInstance = httpServerApp.listen(opts.port, () => {
