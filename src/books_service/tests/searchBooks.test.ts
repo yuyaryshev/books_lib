@@ -8,6 +8,7 @@ const port = 7342;
 const makeTestServiceOpts: (portOffset: number) => BookLibServerSettings = (portOffset: number) => {
     const actualPort = port + portOffset;
     return {
+        upsertTestData: true,
         port: actualPort,
         virtualFolder: "/otherApi/",
         baseUrl: `http://localhost:${actualPort}/otherApi/`,

@@ -8,6 +8,7 @@ const port = 7340;
 const makeTestServiceOpts: (portOffset: number) => BookLibServerSettings = (portOffset: number) => {
     const actualPort = port + portOffset;
     return {
+        upsertTestData: true,
         port: actualPort,
         virtualFolder: "/otherApi/",
         baseUrl: `http://localhost:${actualPort}/otherApi/`,
@@ -51,7 +52,7 @@ describe("rsm_checks_module/validation_service/tests/getLastBooks.test.ts", () =
             const apiCaller = makeApiCaller(axiosInstance);
             {
                 const request: typeof setLastBooksApi.request = {
-                    lastBooks: ["book1"],
+                    lastBooks: ["1002"],
                 };
 
                 const response = await apiCaller.setLastBooks(request);

@@ -26,6 +26,15 @@ export const declareBaseColumns = (t: any) => {
     t.text("description");
 };
 
+export function deleteNulls<T = unknown>(v: T): T {
+    for (let k in v as any) {
+        if ((v as any)[k] === null) {
+            delete (v as any)[k];
+        }
+    }
+    return v;
+}
+
 export class BaseTable<RowT extends RowWithIdT, RowDefaultFieldsT extends keyof RowT> {
     public readonly knex: Knex<RowT>;
     public readonly tableDescriptor: TableDescriptor;
@@ -40,7 +49,26 @@ export class BaseTable<RowT extends RowWithIdT, RowDefaultFieldsT extends keyof 
     }
 
     async getById(id: BaseId): Promise<RowT | undefined> {
-        return await this.knexTable().select().from(this.tableDescriptor.tableName).limit(1).where("id", id).first();
+        return deleteNulls(await this.knexTable().select().from(this.tableDescriptor.tableName).limit(1).where("id", id).first());
+    }
+
+    async upsertById(obj: RowT) {
+        try {
+            return await this.knexTable()
+                .limit(1)
+                .insert(obj as any);
+        } catch (e: any) {
+            return await this.knexTable()
+                .where("id", obj.id)
+                .limit(1)
+                .update(obj as any);
+        }
+    }
+
+    insertById(obj: RowT) {
+        return this.knexTable()
+            .limit(1)
+            .insert(obj as any);
     }
 
     updateById(obj: RowT) {

@@ -11,6 +11,7 @@ import { initTables } from "./db/index.js";
 import knexLib, { Knex } from "knex";
 import { BookLibServerSettings, defaultBookLibServerSettings } from "./settings.js";
 import { deepEqual } from "ystd";
+import { createTablesIfNotExist, upsertTestData } from "./db/db_generics/SchemaFuncs";
 
 export interface BooksLibService {
     start: () => Promise<void> | void;
@@ -33,6 +34,12 @@ export function initBooksLibService(opts0: BookLibServerSettings) {
 
         const dbEnv: ServiceDbEnv = Object.assign(env0, { knex, book_bodies_knex });
         const tables = await initTables(dbEnv);
+        await createTablesIfNotExist(tables);
+
+        if (opts.upsertTestData) {
+            await upsertTestData(tables);
+        }
+
         const envWithTables = Object.assign(dbEnv, { tables });
 
         const httpServerApp = express();

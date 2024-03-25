@@ -34,6 +34,7 @@ export class booksTable extends BaseTable<BookRowT, BookRowDefaultFields> {
                 // DOMAIN_FIELDS(Base).Ancestors DOMAIN_FIELDS(Book)
                 t.bigInteger("id").primary();
                 t.string("name", 200);
+                t.string("description", 2048);
                 t.string("author", 200);
                 t.integer("myMark");
                 t.string("tags", 2000);

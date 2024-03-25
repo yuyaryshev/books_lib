@@ -8,6 +8,7 @@ const port = 7346;
 const makeTestServiceOpts: (portOffset: number) => BookLibServerSettings = (portOffset: number) => {
     const actualPort = port + portOffset;
     return {
+        upsertTestData: true,
         port: actualPort,
         virtualFolder: "/otherApi/",
         baseUrl: `http://localhost:${actualPort}/otherApi/`,
@@ -75,7 +76,7 @@ describe("rsm_checks_module/validation_service/tests/setBookMeta.test.ts", () =>
                         myMark: 3,
                         tags: ["tag1", "tag3"],
                     },
-                    body: "Test book body",
+                    body: "BOOK_BODY_NOT_FOUND bookId=BookId",
                 });
             }
             //        } catch (e: any) {

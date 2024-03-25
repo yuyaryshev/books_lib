@@ -8,6 +8,7 @@ const port = 7340;
 const makeTestServiceOpts: (portOffset: number) => BookLibServerSettings = (portOffset: number) => {
     const actualPort = port + portOffset;
     return {
+        upsertTestData: true,
         port: actualPort,
         virtualFolder: "/otherApi/",
         baseUrl: `http://localhost:${actualPort}/otherApi/`,
@@ -52,20 +53,20 @@ describe("rsm_checks_module/validation_service/tests/getBook.test.ts", () => {
 
             {
                 const request: typeof getBookApi.request = {
-                    bookId: "book1",
+                    bookId: "1002",
                     bodyRequest: "preview",
                 };
 
                 const response = await apiCaller.getBook(request);
                 expectDeepEqual(response, {
                     metadata: {
-                        id: "1001",
-                        name: "book name here",
-                        author: "author here",
-                        myMark: 3,
-                        tags: ["tag1", "tag2"],
+                        id: 1002,
+                        name: "book1002 name",
+                        author: "book1002 author",
+                        myMark: 4,
+                        tags: ["tag1", "tag3"],
                     },
-                    body: "Test book body",
+                    body: "book body 02",
                 });
             }
             //        } catch (e: any) {

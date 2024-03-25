@@ -4,18 +4,12 @@ import { implementHttpExpressApi } from "yhttp_api_express";
 import type { ServiceApiEnv } from "../ServiceApiEnv.js";
 import { setBookBodyApi } from "../../api/index.js";
 import { BookId, BookMetadata, decoderBookMetadata } from "../../types/index.js";
+import { BookBodyRowT } from "../db";
 
 export function setBookBodyApiImpl(env: ServiceApiEnv) {
     implementHttpExpressApi(env.apiRoot, setBookBodyApi, async (req: typeof setBookBodyApi.request): Promise<typeof setBookBodyApi.response> => {
-        const metadata: BookMetadata = {
-            id: "BookId",
-            name: "book name here",
-            author: "author here",
-            myMark: 3,
-            tags: ["tag1", "tag2"],
-        };
-        const body = "Test book body";
-        const r: typeof setBookBodyApi.response = { metadata, body };
-        return r;
+        const bookBodyRow: BookBodyRowT = { id: req.bookId, body: req.body };
+        await env.tables.book_bodies.upsertById(bookBodyRow);
+        return {};
     });
 }
