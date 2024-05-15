@@ -20,7 +20,6 @@ export const defaultCallerUrlOpts = {
   protocol: "http",
   virtualFolder: "/api/",
 };
-
 export interface CallerUrlOpts {
   protocol?: string;
   host?: string;
@@ -28,15 +27,16 @@ export interface CallerUrlOpts {
   virtualFolder?: string;
   baseUrl?: string;
 }
-
 export function makeCallerUrl(opts0: CallerUrlOpts) {
-  const opts = { ...defaultCallerUrlOpts, ...opts0 };
+  const opts = {
+    ...defaultCallerUrlOpts,
+    ...opts0,
+  };
   return (
     opts.baseUrl ||
     `${opts.protocol}://${opts.host}:${opts.port}${opts.virtualFolder}`
   );
 }
-
 export function makeApiCaller(axiosInstance: AxiosInstance) {
   const r = {
     getBook: httpApiFunction(axiosInstance, getBookApi),
@@ -48,5 +48,4 @@ export function makeApiCaller(axiosInstance: AxiosInstance) {
   };
   return r;
 }
-
 export type ApiCaller = ReturnType<typeof makeApiCaller>;

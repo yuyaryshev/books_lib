@@ -29,9 +29,6 @@ module.exports = {
             "@babel/plugin-proposal-decorators",
             { legacy: true },
         ],
-        "@babel/proposal-optional-chaining",
-        "@babel/proposal-class-properties",
-        "@babel/proposal-object-rest-spread",
         [
             "module-resolver",
             {

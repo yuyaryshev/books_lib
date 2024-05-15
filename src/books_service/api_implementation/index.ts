@@ -1,5 +1,4 @@
 import type { ServiceApiEnv } from "../ServiceApiEnv";
-
 export type GenericApiImpl = (env: ServiceApiEnv) => void;
 
 // @INPRINT_START {exclude:[""], merge:[{name:"apiImpls:GenericApiImpl[]", suffix:"ApiImpl", asObject:false}]}

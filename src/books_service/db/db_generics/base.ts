@@ -1,107 +1,87 @@
 import { anyJson, array, constant, Decoder, number, object, oneOf, optional, string } from "yuyaryshev-json-type-validation";
-
 export interface ObjectWithIdSerialized {
-    id: string;
+  id: string;
 }
-
 export interface RelationItemSerialized {
-    id: string;
-    relType: string;
-    target: any;
+  id: string;
+  relType: string;
+  target: any;
 }
-
 export const decoderRelationItemSerialized: Decoder<RelationItemSerialized> = object({
-    id: string(),
-    relType: string(),
-    target: anyJson(),
+  id: string(),
+  relType: string(),
+  target: anyJson()
 });
-
 export interface BaseUpdateSerialized {
-    // DOMAIN_FIELDS(Base).Core
-    id: string;
-    type: string;
+  // DOMAIN_FIELDS(Base).Core
+  id: string;
+  type: string;
 }
-
 export interface BaseSerialized {
-    // DOMAIN_FIELDS(Base).Core
-    id: string | number;
-    type: string;
+  // DOMAIN_FIELDS(Base).Core
+  id: string | number;
+  type: string;
 }
-
 export interface NamedSerialized extends BaseSerialized {
-    // DOMAIN_FIELDS(Base).Core
-    name: string;
-    description?: string | undefined;
+  // DOMAIN_FIELDS(Base).Core
+  name: string;
+  description?: string | undefined;
 }
-
 export type BaseId = string | number;
 export const decoderBaseId: Decoder<BaseId> = oneOf<BaseId>(number(), string());
-
 export const baseFieldsDecoderArgs = {
-    // DOMAIN_FIELDS(Base).Core
-    id: oneOf<string | number>(string(), number()),
-    type: string(),
+  // DOMAIN_FIELDS(Base).Core
+  id: oneOf<string | number>(string(), number()),
+  type: string()
 };
-
 export const decoderNamedObjectDecoderArgs = {
-    ...baseFieldsDecoderArgs,
-    name: string(),
-    description: optional(string()),
+  ...baseFieldsDecoderArgs,
+  name: string(),
+  description: optional(string())
 };
-
 export const baseUpdateFieldsDecoderArgs = {
-    // DOMAIN_FIELDS(Base).Core
-    id: string(),
-    type: string(),
-    name: optional(string()),
-    description: optional(string()),
+  // DOMAIN_FIELDS(Base).Core
+  id: string(),
+  type: string(),
+  name: optional(string()),
+  description: optional(string())
 };
-
 export type LabelData = NamedSerialized;
-
 export interface WithExtFieldsSerialized extends NamedSerialized {
-    labels?: LabelData[] | undefined;
-    relationsFrom?: RelationItemSerialized[] | undefined;
-    relationsTo?: RelationItemSerialized[] | undefined;
+  labels?: LabelData[] | undefined;
+  relationsFrom?: RelationItemSerialized[] | undefined;
+  relationsTo?: RelationItemSerialized[] | undefined;
 }
-
 export const decoderObjectWithBaseFields: Decoder<BaseSerialized> = object(baseFieldsDecoderArgs);
 export const decoderNamedObject: Decoder<LabelData> = object(decoderNamedObjectDecoderArgs);
-
 export const baseUpdateDecoderArgs = {
-    ...baseUpdateFieldsDecoderArgs,
+  ...baseUpdateFieldsDecoderArgs
 };
-
 export const baseDecoderArgs = {
-    ...baseFieldsDecoderArgs,
-    // DOMAIN_FIELDS(Base).Core
-    labels: optional(array(decoderObjectWithBaseFields)),
-    relationsFrom: optional(array(decoderRelationItemSerialized)),
-    relationsTo: optional(array(decoderRelationItemSerialized)),
+  ...baseFieldsDecoderArgs,
+  // DOMAIN_FIELDS(Base).Core
+  labels: optional(array(decoderObjectWithBaseFields)),
+  relationsFrom: optional(array(decoderRelationItemSerialized)),
+  relationsTo: optional(array(decoderRelationItemSerialized))
 };
-
 export interface ExtendedFieldCategoriesObj {
-    relations?: true;
-    labels?: true;
+  relations?: true;
+  labels?: true;
 }
-
 export type ExtendedFieldCategory = keyof ExtendedFieldCategoriesObj;
 export const allExtendedFieldCategories: ExtendedFieldCategory[] = ["relations", "labels"];
-export const decoderExtendedFieldCategory: Decoder<ExtendedFieldCategory> = oneOf(...allExtendedFieldCategories.map(constant)) as any;
-
+export const decoderExtendedFieldCategory: Decoder<ExtendedFieldCategory> = (oneOf(...allExtendedFieldCategories.map(constant)) as any);
 export type ExtendedFieldCategories = ExtendedFieldCategory[];
 export const decoderExtendedFieldCategories: Decoder<ExtendedFieldCategories> = array(decoderExtendedFieldCategory);
-
 export const baseReadObjDecoder = {
-    extend: optional(decoderExtendedFieldCategories),
+  extend: optional(decoderExtendedFieldCategories)
 };
-
 export const extendedFieldCategoriesToObj = (extendCategories: ExtendedFieldCategories | undefined): ExtendedFieldCategoriesObj => {
-    const r: ExtendedFieldCategoriesObj = {};
-    if (extendCategories) {
-        for (const k of extendCategories) {
-            r[k] = true;
-        }
+  const r: ExtendedFieldCategoriesObj = {};
+  if (extendCategories) {
+    for (const k of extendCategories) {
+      r[k] = true;
     }
-    return r;
+  }
+  return r;
 };
