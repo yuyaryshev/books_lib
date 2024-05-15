@@ -3,6 +3,7 @@ import { createBrowserRouter, Router } from "react-router-dom";
 import { HomePage } from "../pages/home/index.js";
 import { TestPage } from "../pages/test_page/index.js";
 import { BookPage } from "../pages/book_page/index.js";
+import { SearchPage } from "../pages/search_page";
 
 export const router: ReturnType<typeof createBrowserRouter> = createBrowserRouter([
     {
@@ -12,6 +13,10 @@ export const router: ReturnType<typeof createBrowserRouter> = createBrowserRoute
     {
         path: "/test_page",
         element: <TestPage />,
+    },
+    {
+        path: "/search",
+        element: <SearchPage />,
     },
     {
         path: "/book/:bookId",
