@@ -9,6 +9,7 @@ export * from "./setBookBody.js";
 export * from "./setBookMeta.js";
 export * from "./setLastBooks.js";
 
+import { getVersionApiImpl } from "./getVersion.js";
 import { getBookApiImpl } from "./getBook.js";
 import { getLastBooksApiImpl } from "./getLastBooks.js";
 import { searchBooksApiImpl } from "./searchBooks.js";
@@ -16,17 +17,18 @@ import { setBookBodyApiImpl } from "./setBookBody.js";
 import { setBookMetaApiImpl } from "./setBookMeta.js";
 import { setLastBooksApiImpl } from "./setLastBooks.js";
 export const apiImpls: GenericApiImpl[] = [
-  getBookApiImpl,
-  getLastBooksApiImpl,
-  searchBooksApiImpl,
-  setBookBodyApiImpl,
-  setBookMetaApiImpl,
-  setLastBooksApiImpl,
+    getVersionApiImpl,
+    getBookApiImpl,
+    getLastBooksApiImpl,
+    searchBooksApiImpl,
+    setBookBodyApiImpl,
+    setBookMetaApiImpl,
+    setLastBooksApiImpl,
 ];
 // @INPRINT_END
 
 export function publishApis(env: ServiceApiEnv) {
-  for (const apiImpl of apiImpls) {
-    apiImpl(env);
-  }
+    for (const apiImpl of apiImpls) {
+        apiImpl(env);
+    }
 }

@@ -1,7 +1,7 @@
 import express from "express";
 import { ApiRoot } from "yhttp_api_express";
 import { serverStartupAutotests } from "./serverStartupAutotests.js";
-import { CallerUrlOpts } from "../api/index.js";
+import { CallerUrlOpts, makeCallerUrl } from "../api/index.js";
 import { ServiceApiEnv } from "./ServiceApiEnv.js";
 import { publishApis } from "./api_implementation/index.js";
 import { YHttpResponse } from "yhttp_api_express/src/implementerLib";
@@ -11,6 +11,7 @@ import knexLib, { Knex } from "knex";
 import { BookLibServerSettings, defaultBookLibServerSettings } from "./settings.js";
 import { deepEqual } from "ystd";
 import { createTablesIfNotExist, upsertTestData } from "./db/db_generics/SchemaFuncs.js";
+import { writeFileIfChanged } from "../../../ystd_server";
 export interface BooksLibService {
     start: () => Promise<void> | void;
     stop: () => Promise<void> | void;
@@ -22,6 +23,10 @@ export function initBooksLibService(opts0: BookLibServerSettings) {
     };
     let runningInstance: any;
     async function start() {
+        const callerUrl = makeCallerUrl(opts);
+        console.log(`CODE00000000 callerUrl=${callerUrl}`);
+        // writeFileIfChanged("callerUrl.js", `module.exports = {callerUrl: ${JSON.stringify(callerUrl)};`);
+
         const env0 = {};
         const knex = Object.assign(
             knexLib({
@@ -76,14 +81,14 @@ export function initBooksLibService(opts0: BookLibServerSettings) {
         });
         publishApis(apiPrereq);
         runningInstance = httpServerApp.listen(opts.port, () => {
-            console.log("CODE00001215", `Test server is listening on port ${opts.port}`);
+            console.log("CODE00001215", `books_service is listening on port ${opts.port}`);
         }) as any;
         await serverStartupAutotests(opts);
     }
     function stop() {
         if (runningInstance) {
             runningInstance.close(() => {
-                console.log("CODE00001216", `Test server on port ${opts.port} is now offline.`);
+                console.log("CODE00001216", `books_service on port ${opts.port} is now offline.`);
             });
         }
     }

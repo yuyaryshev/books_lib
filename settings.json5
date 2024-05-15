@@ -1,0 +1,27 @@
+{
+    upsertTestData: true,
+    port: 7704,
+    virtualFolder: "/api/",
+    baseUrl: "http://localhost:7704/api/",
+    db: {
+        recreateSchema: false,
+        createTestData: false,
+        client: "better-sqlite3",
+        connection: {
+            filename: ":memory:",
+            // filename: "./ylog_server.db",
+        },
+    },
+    book_bodies_db: {
+    recreateSchema: false,
+    createTestData: false,
+    client: "better-sqlite3",
+    connection: {
+        filename: ":memory:",
+        // filename: "./ylog_server.db",
+    },
+    },
+    authStorage: {
+        path: ":memory:",
+    },
+}

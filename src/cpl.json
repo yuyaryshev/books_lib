@@ -5,11 +5,11 @@
         "refs": []
     },
     "00001215": {
-        "posAddr": "src/books_service/books_service.ts:72:20:2435",
+        "posAddr": "src/books_service/books_service.ts:71:20:2382",
         "refs": []
     },
     "00001216": {
-        "posAddr": "src/books_service/books_service.ts:79:22:2664",
+        "posAddr": "src/books_service/books_service.ts:78:22:2613",
         "refs": []
     },
     "00000003": {
@@ -23,7 +23,7 @@
         "refs": []
     },
     "00000067": {
-        "posAddr": "src/books_service/db/db_generics/BaseTable.ts:62:22:2029",
+        "posAddr": "src/books_service/db/db_generics/BaseTable.ts:62:22:2030",
         "message": "Internal error. Create not specified for '${this.tableDescriptor.tableName}' table. Use the following as guidline:n",
         "refs": []
     }
