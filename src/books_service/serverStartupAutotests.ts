@@ -1,6 +1,4 @@
 import axios from "axios";
-import { httpApiFunction } from "yhttp_api";
-import { expectDeepEqual } from "ystd";
 import { BookLibServerSettings } from "./settings.js";
 import { makeApiCaller, makeCallerUrl } from "../api/index.js";
 export async function serverStartupAutotests(opts: BookLibServerSettings) {

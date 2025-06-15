@@ -1,5 +1,5 @@
-import { createTheme } from '@mui/material';
-declare module '@mui/material/styles' {
+import { createTheme } from "@mui/material";
+declare module "@mui/material/styles" {
   interface PaletteColor {
     container?: string;
   }
@@ -10,8 +10,8 @@ declare module '@mui/material/styles' {
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#6750A4',
-      container: '#EADDFF'
+      main: "#6750A4",
+      container: "#EADDFF"
     }
   }
 });

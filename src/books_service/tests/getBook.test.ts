@@ -1,6 +1,6 @@
 import { expectDeepEqual } from "ystd";
 import axios from "axios";
-import { makeApiCaller, makeCallerUrl, getBookApi } from "../../api/index.js";
+import { getBookApi, makeApiCaller, makeCallerUrl } from "../../api/index.js";
 import type { BookLibServerSettings } from "../settings";
 import { initBooksLibService } from "../books_service.js";
 const port = 7340;
@@ -54,7 +54,10 @@ describe("books_lib/getBook.test.ts", () => {
         expectDeepEqual(response, {
           metadata: {
             id: 1002,
+            url: "http://book1002 name",
+            externalBookId: "book1002 name",
             name: "book1002 name",
+            sourceSite: "testData",
             author: "book1002 author",
             myMark: 4,
             tags: ["tag1", "tag3"]

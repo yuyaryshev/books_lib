@@ -1,5 +1,5 @@
-import { httpApiDefinition, httpApiFunction } from "yhttp_api";
-import { object, string, number, array, anyJson, boolean, optional, Decoder, oneOf, constant } from "yuyaryshev-json-type-validation";
+import { httpApiDefinition } from "yhttp_api";
+import { constant, Decoder, oneOf, optional, string } from "yuyaryshev-json-type-validation";
 import { decoderBookId } from "../types/BookId.js";
 import { decoderBookMetadata } from "../types/BookMetadata.js";
 export type BookBodyRequest = "none" | "preview" | "full";

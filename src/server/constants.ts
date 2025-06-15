@@ -1,0 +1,3 @@
+export const MAX_LAST_BOOKS = 200;
+export const BOOKS_PROCESSING_BATCH = 1;
+export const BOOK_SCENES_PROCESSING_BATCH = 1;

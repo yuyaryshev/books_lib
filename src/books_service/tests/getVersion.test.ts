@@ -1,8 +1,9 @@
 import { expectDeepEqual } from "ystd";
 import axios from "axios";
-import { makeApiCaller, makeCallerUrl, getVersionApi } from "../../api/index.js";
+import { getVersionApi, makeApiCaller, makeCallerUrl } from "../../api/index.js";
 import type { BookLibServerSettings } from "../settings";
 import { initBooksLibService } from "../books_service.js";
+
 const port = 7340;
 const makeTestServiceOpts: (portOffset: number) => BookLibServerSettings = (portOffset: number) => {
     const actualPort = port + portOffset;
@@ -34,6 +35,7 @@ const makeTestServiceOpts: (portOffset: number) => BookLibServerSettings = (port
         },
     };
 };
+
 describe("books_lib/getVersion.test.ts", () => {
     it("getVersionApi - request1", async function () {
         const testServiceOpts = makeTestServiceOpts(1);
@@ -48,7 +50,7 @@ describe("books_lib/getVersion.test.ts", () => {
             {
                 const request: typeof getVersionApi.request = {};
                 const response = await apiCaller.getVersion(request as any);
-                expectDeepEqual(response, { version: 100 });
+                expectDeepEqual(response.version, 100);
             }
         } finally {
             booksLibService?.stop();

@@ -1,6 +1,4 @@
-import { httpApiDefinition, httpApiFunction } from "yhttp_api";
-import { object, string, number, array, anyJson, boolean, optional } from "yuyaryshev-json-type-validation";
-import { decoderBookId } from "../types/BookId.js";
+import { httpApiDefinition } from "yhttp_api";
 import { decoderBookMetadata } from "../types/BookMetadata.js";
 export const setBookMetaApi = httpApiDefinition("setBookMeta", {
   // Includes fields from JSON body, also includes headers. Body owerwrite header fields

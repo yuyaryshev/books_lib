@@ -1,6 +1,5 @@
 import { BaseTable, RowWithIdT } from "./BaseTable.js";
 import { EnvWithTimers } from "ystd";
-import { Decoder, number, string, oneOf } from "yuyaryshev-json-type-validation";
 import type { BaseId } from "./BaseId";
 import type { TablesAndViews } from "../index";
 import { BaseSerialized, ExtendedFieldCategoriesObj } from "./base.js";

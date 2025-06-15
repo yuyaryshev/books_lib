@@ -49,7 +49,10 @@ describe("books_lib/setBookMeta.test.ts", () => {
         const request: typeof setBookMetaApi.request = {
           metadata: {
             id: "BookId",
+            url: "TBD",
+            externalBookId: "TBD_BOOK_ID",
             name: "book name here",
+            sourceSite: "testData",
             author: "author here",
             myMark: 3,
             tags: ["tag1", "tag3"]
@@ -66,7 +69,10 @@ describe("books_lib/setBookMeta.test.ts", () => {
         expectDeepEqual(response, {
           metadata: {
             id: "BookId",
+            url: "TBD",
+            externalBookId: "TBD_BOOK_ID",
             name: "book name here",
+            sourceSite: "testData",
             author: "author here",
             myMark: 3,
             tags: ["tag1", "tag3"]
