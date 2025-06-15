@@ -8,15 +8,21 @@ import { getLastBooksApi } from "./getLastBooksApi.js";
 import { setLastBooksApi } from "./setLastBooksApi.js";
 import { getVersionApi } from "./getVersionApi";
 import { currentVersion } from "../books_service/api_implementation";
+import { reprocessBooksApi } from "./reprocessBooksApi.js";
+import { reprocessBookScenesApi } from "./reprocessBookScenesApi.js";
+import { traitsFromJsonApi } from "./traitsFromJsonApi.js";
 
 // @INPRINT_START {exclude:["projmeta"]}
 export * from "./getBookApi.js";
 export * from "./getLastBooksApi.js";
 export * from "./getVersionApi.js";
+export * from "./reprocessBookScenesApi.js";
+export * from "./reprocessBooksApi.js";
 export * from "./searchBooksApi.js";
 export * from "./setBookApi.js";
 export * from "./setBookMetaApi.js";
 export * from "./setLastBooksApi.js";
+export * from "./traitsFromJsonApi.js";
 // @INPRINT_END
 
 export const defaultCallerUrlOpts = {
@@ -65,6 +71,9 @@ export function makeApiCaller(axiosInstance: AxiosInstance) {
     searchBooks: httpApiFunction(axiosInstance, searchBooksApi),
     getLastBooks: httpApiFunction(axiosInstance, getLastBooksApi),
     setLastBooks: httpApiFunction(axiosInstance, setLastBooksApi),
+    reprocessBooks: httpApiFunction(axiosInstance, reprocessBooksApi),
+    reprocessBookScenes: httpApiFunction(axiosInstance, reprocessBookScenesApi),
+    traitsFromJson: httpApiFunction(axiosInstance, traitsFromJsonApi),
   };
   return r;
 }

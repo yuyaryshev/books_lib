@@ -1,11 +1,11 @@
 {
     "00000005": {
-        "posAddr": "src/api/index.ts:47:28:1593",
+        "posAddr": "src/api/index.ts:53:28:1908",
         "message": "Client/server version mismatch! clientVersion=${currentVersion}, serverVersion=${response.version || \"undefined\"}",
         "refs": []
     },
     "00000006": {
-        "posAddr": "src/api/index.ts:50:22:1779",
+        "posAddr": "src/api/index.ts:56:22:2094",
         "message": "Check connection failed! Inner error: ${e.stack}",
         "refs": []
     },
@@ -15,46 +15,31 @@
         "refs": []
     },
     "00000008": {
-        "posAddr": "src/books_service/book_analysing/processBook.ts:6:20:346",
-        "message": "reprocessBookScenes @notImplemented",
+        "posAddr": "src/books_service/book_analysing/doProcessBook.ts:7:20:428",
+        "message": "doProcessBook @notImplemented",
         "refs": []
     },
     "00000009": {
-        "posAddr": "src/books_service/book_analysing/processBookScene.ts:6:20:355",
-        "message": "reprocessBookScenes @notImplemented",
+        "posAddr": "src/books_service/book_analysing/doProcessBookScene.ts:6:20:372",
+        "message": "doProcessBookScene @notImplemented",
         "refs": []
     },
-    "00000011": {
-        "posAddr": "src/books_service/book_analysing/reprocessAllBooks.ts:4:20:187",
-        "message": "reprocessAllBooks @notImplemented",
-        "refs": []
-    },
-    "00000012": {
-        "posAddr": "src/books_service/book_analysing/reprocessAllScenes.ts:4:20:200",
-        "message": "reprocessAllScenes @notImplemented",
-        "refs": []
-    },
-    "00000013": {
-        "posAddr": "src/books_service/book_analysing/reprocessBook.ts:9:20:404",
-        "message": "reprocessBook @notImplemented",
-        "refs": []
-    },
-    "00000014": {
-        "posAddr": "src/books_service/book_analysing/reprocessBookScenes.ts:9:20:422",
-        "message": "reprocessBookScenes @notImplemented",
+    "00000020": {
+        "posAddr": "src/books_service/book_analysing/reprocessBook.ts:13:24:819",
+        "message": "BookId = ${book_id} - not found!",
         "refs": []
     },
     "00000002": {
-        "posAddr": "src/books_service/books_service.ts:26:18:1097",
+        "posAddr": "src/books_service/books_service.ts:26:18:1113",
         "message": "callerUrl=${callerUrl}",
         "refs": []
     },
     "00001215": {
-        "posAddr": "src/books_service/books_service.ts:75:20:2577",
+        "posAddr": "src/books_service/books_service.ts:76:20:2627",
         "refs": []
     },
     "00001216": {
-        "posAddr": "src/books_service/books_service.ts:82:22:2808",
+        "posAddr": "src/books_service/books_service.ts:83:22:2858",
         "refs": []
     },
     "00000003": {
@@ -72,19 +57,34 @@
         "message": "bookSceneQueueTableInitializer - @notImplemented",
         "refs": []
     },
-    "00000067": {
-        "posAddr": "src/books_service/db/db_generics/BaseTable.ts:59:22:2012",
-        "message": "Internal error. Create not specified for '${this.tableDescriptor.tableName}' table. Use the following as guidline:n",
+    "00000019": {
+        "posAddr": "src/books_service/db/book_scene_traits.ts:5:21:225",
+        "message": "book_scene_traitsTableInitializer - @notImplemented",
         "refs": []
     },
-    "00000007": {
-        "posAddr": "src/books_service/db/db_generics/QueueTable.ts:37:22:1274",
-        "message": "Internal error. Create not specified for '${this.tableDescriptor.tableName}' table. Use the following as guidline:n",
+    "00000018": {
+        "posAddr": "src/books_service/db/book_scenes.ts:5:21:219",
+        "message": "book_scenesTableInitializer - @notImplemented",
         "refs": []
     },
     "00000001": {
         "posAddr": "src/books_service/db/books.ts:5:21:213",
         "message": "booksTableInitializer - @notImplemented",
+        "refs": []
+    },
+    "00000017": {
+        "posAddr": "src/books_service/db/books_last.ts:5:21:217",
+        "message": "booksLastTableInitializer - @notImplemented",
+        "refs": []
+    },
+    "00000067": {
+        "posAddr": "src/books_service/db/db_generics/BaseTable.ts:64:22:2190",
+        "message": "Internal error. Create not specified for '${this.tableDescriptor.tableName}' table. Use the following as guidline:n",
+        "refs": []
+    },
+    "00000010": {
+        "posAddr": "src/books_service/db/db_generics/SchemaFuncs.ts:16:21:510",
+        "message": "fillIdManagers SQL failed",
         "refs": []
     }
 }

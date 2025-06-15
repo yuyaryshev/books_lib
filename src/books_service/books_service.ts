@@ -10,7 +10,7 @@ import { initTables } from "./db/index.js";
 import knexLib from "knex";
 import { BookLibServerSettings, defaultBookLibServerSettings } from "./settings.js";
 import { deepEqual } from "ystd";
-import { createTablesIfNotExist, upsertTestData } from "./db/db_generics/SchemaFuncs.js";
+import { createTablesIfNotExist, fillIdManagers, upsertTestData } from "./db/db_generics/SchemaFuncs.js";
 export interface BooksLibService {
   start: () => Promise<void> | void;
   stop: () => Promise<void> | void;
@@ -48,6 +48,7 @@ export function initBooksLibService(opts0: BookLibServerSettings) {
     });
     const tables = await initTables(dbEnv);
     await createTablesIfNotExist(tables);
+    await fillIdManagers(tables);
     if (opts.upsertTestData) {
       await upsertTestData(tables);
     }

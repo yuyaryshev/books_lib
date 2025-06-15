@@ -1,6 +1,6 @@
 import { expectDeepEqual } from "ystd";
 import axios from "axios";
-import { getVersionApi, makeApiCaller, makeCallerUrl } from "../../api/index.js";
+import { makeApiCaller, makeCallerUrl, reprocessBookScenesApi, traitsFromJsonApi } from "../../api/index.js";
 import type { BookLibServerSettings } from "../settings";
 import { initBooksLibService } from "../books_service.js";
 const port = 7340;
@@ -34,8 +34,8 @@ const makeTestServiceOpts: (portOffset: number) => BookLibServerSettings = (port
     }
   };
 };
-describe("books_lib/getVersion.test.ts", () => {
-  it("getVersionApi - request1", async function () {
+describe("books_lib/traitsFromJson.test.ts", () => {
+  it("traitsFromJsonApi - request1", async function () {
     const testServiceOpts = makeTestServiceOpts(1);
     const booksLibService = initBooksLibService(testServiceOpts);
     try {
@@ -46,9 +46,9 @@ describe("books_lib/getVersion.test.ts", () => {
       const axiosInstance = axios.create(axiosOpts);
       const apiCaller = makeApiCaller(axiosInstance);
       {
-        const request: typeof getVersionApi.request = {};
-        const response = await apiCaller.getVersion((request as any));
-        expectDeepEqual(response.version, 100);
+        const request: typeof traitsFromJsonApi.request = {};
+        const response = await apiCaller.traitsFromJson(request);
+        expectDeepEqual(response, {});
       }
     } finally {
       booksLibService?.stop();

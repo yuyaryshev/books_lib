@@ -1,20 +1,24 @@
 ﻿path	package	class	function	severity	deleted_ts	a	sem_ids	cat	file_path	file_line	file_line_pos	source_pos	expectation	ylog_name	cpl_comment	has_ylog_on	text	anchor_key	cpl	tsv_line
-	api								src/api/index.ts	47	28	1593				0	Client/server version mismatch! clientVersion=${currentVersion}, serverVersion=${response.version || "undefined"}	2a7602b2038a889b47cd8d7e408693f105f1509257c948651d94e74e4d2bcec9	CODE00000005	1
-	api								src/api/index.ts	50	22	1779				0	Check connection failed! Inner error: ${e.stack}	4d8a1760107921b0c2e70ccf47746f4e7c0d4a1e33a6fb696b83a5dfa26609fe	CODE00000006	2
+	api								src/api/index.ts	53	28	1908				0	Client/server version mismatch! clientVersion=${currentVersion}, serverVersion=${response.version || "undefined"}	7af346dee8b120db5c74b6b8c504ad07164f2ca9b58ede18a862c34b9be94007	CODE00000005	1
+	api								src/api/index.ts	56	22	2094				0	Check connection failed! Inner error: ${e.stack}	8d9575e482aef0bbbb9d504428c8407300a4dbdeaac93600a0d9021ac96da2d4	CODE00000006	2
 	books_service								src/books_service/api_implementation/getBook.ts	10	24	609				0	BookId = ${req.bookId} - not found!	7faeaec6d8cb74506872fa1f73b57abdeb9f2a4aeb47a5e2bbc0d2bcf042ae77	CODE00000004	3
-	books_service								src/books_service/book_analysing/processBook.ts	6	20	346				0	reprocessBookScenes @notImplemented	d8c3acd164d1eef5dffbbe4d3f74a61c80f8c888beb5a959c6840d342173f4cd	CODE00000008	4
-	books_service								src/books_service/book_analysing/doProcessBookScene.ts	6	20	355				0	reprocessBookScenes @notImplemented	f011ccf984c766e2f77f538c8a2c278b38d7031c1967edbf7cf7c3bca2c8dbf7	CODE00000009	5
-	books_service								src/books_service/book_analysing/reindexBook.ts	6	20	294				0	reindexBook @notImplemented	e40d1a654f42417e7b8c6b17a777c0436e00c4adb7ddc0ca8e2749094f386991	CODE00000010	6
-	books_service								src/books_service/book_analysing/reprocessAllBooks.ts	4	20	187				0	reprocessAllBooks @notImplemented	cd367eda88a925d95851bd58566d8e457019343a28856aa96ffdf20355cee947	CODE00000011	7
-	books_service								src/books_service/book_analysing/reprocessAllScenes.ts	4	20	200				0	reprocessAllScenes @notImplemented	9e573246da2c87524fbf64e8a2102e05da70e8cf10d0f2212a451cb6e8f37cbc	CODE00000012	8
-	books_service								src/books_service/book_analysing/reprocessBook.ts	9	20	404				0	reprocessBook @notImplemented	aea88dcc78f64623847f1589695693a67bcdb94225adbba81896bd2703228c19	CODE00000013	9
+	books_service								src/books_service/book_analysing/doProcessBook.ts	7	20	428				0	doProcessBook @notImplemented	ccc638880796f5a096f7f4e0e5cacbc40791604cf22c4c44dab36006dbb889fa	CODE00000008	4
+	books_service								src/books_service/book_analysing/doProcessBookScene.ts	6	20	372				0	doProcessBookScene @notImplemented	8098f0acc47c959c30d723e9be17f063b8a5e22a9c856d1b8870f565551c4c98	CODE00000009	5
+	books_service								src/books_service/book_analysing/reprocessAllBooks.ts	4	20	187				0	reprocessAllBooks @notImplemented	cd367eda88a925d95851bd58566d8e457019343a28856aa96ffdf20355cee947	CODE00000011	6
+	books_service								src/books_service/book_analysing/reprocessAllScenes.ts	4	20	200				0	reprocessAllScenes @notImplemented	9e573246da2c87524fbf64e8a2102e05da70e8cf10d0f2212a451cb6e8f37cbc	CODE00000012	7
+	books_service								src/books_service/book_analysing/reprocessBook.ts	9	20	404				0	reprocessBook @notImplemented	aea88dcc78f64623847f1589695693a67bcdb94225adbba81896bd2703228c19	CODE00000013	8
+	books_service								src/books_service/book_analysing/reprocessBook.ts	13	24	819				0	BookId = ${book_id} - not found!	d165648a3e863090011422e12e4a264054a39a5204fae01c477023ee2724f0b4	CODE00000020	9
 	books_service								src/books_service/book_analysing/reprocessBookScenes.ts	9	20	422				0	reprocessBookScenes @notImplemented	bdfd047118c9fda39a8e94ddc7afb46e293d0b1c70200f630e2728fa914b2f27	CODE00000014	10
-	books_service								src/books_service/books_service.ts	26	18	1097				0	callerUrl=${callerUrl}	9458a8f113a62ba4c84f2bf47900e4df682fdadb4ecf2b0f390809d17e7c733b	CODE00000002	11
-	books_service								src/books_service/books_service.ts	75	20	2577				0		db907d6f7ed4ba4b01cb44bf480f8963dd791bf19d05e25726d6f870283e603f	CODE00001215	12
-	books_service								src/books_service/books_service.ts	82	22	2808				0		6193ec667e2a0429dd909cf186a9e7f8bafce444d14e1bf6903fcf33eb535dcc	CODE00001216	13
+	books_service								src/books_service/books_service.ts	26	18	1113				0	callerUrl=${callerUrl}	9458a8f113a62ba4c84f2bf47900e4df682fdadb4ecf2b0f390809d17e7c733b	CODE00000002	11
+	books_service								src/books_service/books_service.ts	76	20	2627				0		db907d6f7ed4ba4b01cb44bf480f8963dd791bf19d05e25726d6f870283e603f	CODE00001215	12
+	books_service								src/books_service/books_service.ts	83	22	2858				0		6193ec667e2a0429dd909cf186a9e7f8bafce444d14e1bf6903fcf33eb535dcc	CODE00001216	13
 	books_service								src/books_service/db/book_bodies.ts	5	21	219				0	book_bodiesTableInitializer - @notImplemented	6fb3c0b459e658a460f37f8ddea3bcc4a8e7ddc7fb06aecccbf5001db8d77e1e	CODE00000003	14
 	books_service								src/books_service/db/book_queue.ts	5	21	217				0	bookQueueTableInitializer - @notImplemented	8672825110c88cde84b9f944dcf6b83fbd97211a7fa1565e16160ebe87aeeada	CODE00000015	15
 	books_service								src/books_service/db/book_scene_queue.ts	5	21	222				0	bookSceneQueueTableInitializer - @notImplemented	e46b8dd27c2d170c758b985b6b2606ed7c73139d05c571bddfd2908fcb10494a	CODE00000016	16
-	books_service								src/books_service/db/books.ts	5	21	213				0	booksTableInitializer - @notImplemented	6fc2b704a29035eb4e9ad4262ec6467a47dccc6e861917d233b844b1f8b93b75	CODE00000001	17
-	books_service								src/books_service/db/db_generics/BaseTable.ts	59	22	2012				0	Internal error. Create not specified for '${this.tableDescriptor.tableName}' table. Use the following as guidline:n	e6fec1e4a00b8e49fdf5dd4bd5981ee021b117fbbea16e8323740aff5110618d	CODE00000067	18
-	books_service								src/books_service/db/db_generics/QueueTable.ts	37	22	1274				0	Internal error. Create not specified for '${this.tableDescriptor.tableName}' table. Use the following as guidline:n	428223bd31b5c88162121f0f1fae3c887c9047572a77b8c5357fd982b68d5c1b	CODE00000007	19
+	books_service								src/books_service/db/book_scene_traits.ts	5	21	225				0	book_scene_traitsTableInitializer - @notImplemented	81b53db6f2e1b037252075f9ca15718a163827b33cc5ae391c7c406f63a51da1	CODE00000019	17
+	books_service								src/books_service/db/book_scenes.ts	5	21	219				0	book_scenesTableInitializer - @notImplemented	4afd09dfd62308818494607ad1877b0029b927ff6f29fd0a27d9a3926a01d4b0	CODE00000018	18
+	books_service								src/books_service/db/books.ts	5	21	213				0	booksTableInitializer - @notImplemented	6fc2b704a29035eb4e9ad4262ec6467a47dccc6e861917d233b844b1f8b93b75	CODE00000001	19
+	books_service								src/books_service/db/books_last.ts	5	21	217				0	booksLastTableInitializer - @notImplemented	5ae2ef86ef653030280dda4ac7e64054811eca9d59094e40f42addf7f019c274	CODE00000017	20
+	books_service								src/books_service/db/db_generics/BaseTable.ts	64	22	2190				0	Internal error. Create not specified for '${this.tableDescriptor.tableName}' table. Use the following as guidline:n	e6fec1e4a00b8e49fdf5dd4bd5981ee021b117fbbea16e8323740aff5110618d	CODE00000067	21
+	books_service								src/books_service/db/db_generics/QueueTable.ts	37	22	1274				0	Internal error. Create not specified for '${this.tableDescriptor.tableName}' table. Use the following as guidline:n	428223bd31b5c88162121f0f1fae3c887c9047572a77b8c5357fd982b68d5c1b	CODE00000007	22
+	books_service								src/books_service/db/db_generics/SchemaFuncs.ts	16	21	510				0	fillIdManagers SQL failed	e3695be0967335a675bc05228b4f3a55af2d0d62a155515519dbfdda6f662d85	CODE00000010	23
