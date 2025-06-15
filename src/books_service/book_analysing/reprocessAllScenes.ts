@@ -1,5 +1,5 @@
 import type { ServiceApiEnv } from "../ServiceApiEnv.js";
+import { book_scenesTableDescriptor } from "../db/book_scenes.js";
 export async function reprocessAllScenes(env: ServiceApiEnv) {
-    // TODO insert в таблицу book_scene_queue всех id из book_scene
-    throw new Error(`CODE00000012 reprocessAllScenes @notImplemented`);
+    await env.tables.book_queue.copyFrom(book_scenesTableDescriptor.tableName, false);
 }

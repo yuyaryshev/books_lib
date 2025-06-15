@@ -23,7 +23,7 @@ export const declareBaseColumns = (t: any) => {
 
 export function deleteNulls<T = unknown>(v: T): T {
     for (let k in v as any) {
-        if ((v as any)[k] === null) {
+        if ((v as any)[k] === null || (v as any)[k] === undefined) {
             delete (v as any)[k];
         }
     }

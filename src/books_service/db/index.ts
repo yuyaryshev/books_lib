@@ -15,6 +15,7 @@ import { book_scene_queueTable } from "./book_scene_queue.js";
 import { booksTable } from "./books.js";
 import { books_lastTable } from "./books_last.js";
 import { book_scenesTable } from "./book_scenes.js";
+import { book_scene_traitsTable } from "./book_scene_traits.js";
 
 export async function initTables(dbEnv: ServiceDbEnv) {
     return {
@@ -24,6 +25,7 @@ export async function initTables(dbEnv: ServiceDbEnv) {
         books: new booksTable(dbEnv),
         books_last: new books_lastTable(dbEnv),
         book_scenes: new book_scenesTable(dbEnv),
+        book_scene_traits: new book_scene_traitsTable(dbEnv),
     };
 }
 // @INPRINT_END
